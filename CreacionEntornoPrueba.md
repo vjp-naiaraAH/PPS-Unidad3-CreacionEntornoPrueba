@@ -1,25 +1,74 @@
 # Creación de Entorno de Pruebas para Análisis de Vulnerabilidades Web
 **Actividad - Unidad 3 – Vulnerabilidades Web**  
 
-Para comenzar voy a 
-+ Clonar el repositorio (antes yo he creado un directorio llamado unidad 3 y en su interior otro directorio más con el nombre de la tarea)
-+ Entrar dentro de la carpeta del proyecto y hacer una copia del fichero sample.env en un fichero llamado .env
-img1.png
+## Objetivo
+Configurar un entorno local LAMP mediante Docker Compose para disponer de un laboratorio seguro donde practicar vulnerabilidades web.
 
-A continuación entro en el archivo .env y veo que tiene un aspecto tal que el siguiente
-img2.png
+## Pasos realizados
 
-El siguiente paso ya es levantar el entorno haciendo uso del comando 
-> docker compose up -d
-(Tarda un poquillo)
-img3.png
+### 1. Creación de la estructura de directorios
+Con el uso de los comandos
+```bash
+mkdir Unidad3
+cd Unidad3
+mkdir CreacionEntornoPruebas
+cd CreacionEntornoPruebas
+```
+Para tener el siguiente formato: 
+Unidad3/
+└──-CreacionEntornoPrueba/
 
+---
 
-Y con el comando docker ps veo que efectivamente se han levantado los contenedores correctamente 
-img4.png
+### 2. Clonación del repositorio 
+He clonado el repositorio y copiado el archivo de configuración .env pegando el siguiente bloque de comandos:
+```bash
+git clone https://github.com/sprintcube/docker-compose-lamp.git
+cd docker-compose-lamp/
+cp sample.env .env
+```
+![Paso 1 - Clonado y copia del .env](/images/img1.png)
 
-A continuación accedo  verifico que phpmyadmin funciona correctamente accediendo en cualquier navegador de la máquina virtual a la url http://localhost:8080
-img5.png
+---
 
-Y accedo a la pagina principal del entorno poniendo en cualquier navegador de la máquina virtual http://localhost
-img6.png
+### 3. Revisión del archivo .env
+Compruebo el archivo .env y modifico contraseñas y usuarios para poder tener un mínimo de segurirdad
+
+![Paso 2 - Vistazo al archivo .env](/images/img2.png)
+
+---
+
+### 4. Revisión del archivo .env
+Levanto el entorno con el comando
+```bash
+docker compose up -d
+```
+![Paso 3 - Levantar el contenedor](/images/img3.png)
+
+---
+
+### 5. Verificación de contenedores
+Verifico si el contendor se ha levantado correctamente poniendo lo siguiente en la línea de comandos 
+```bash
+docker ps
+```
+![Paso 4 - Verificación](/images/img4.png)
+
+---
+
+### 6. Acceso a phpMyAdmin
+Abro cualquier navegador de la máquina virtual, en mi caso VirtualBox y pongo en la url http://localhost:8080 
+
+![Paso 5 - phpMyAdmin](/images/img5.png)
+
+---
+
+### 7. Acceso a la página principal
+En el mismo navegador pongo en la url http://localhost
+
+![Paso 6 - Página principal LAMP](/images/img6.png)
+
+---
+
+## Conclusión
+El entorno LAMP se ha configurado, iniciado y verificado correctamente. Tanto el servidor web como phpMyAdmin funcionan sin problemas
